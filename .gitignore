@@ -1,0 +1,6 @@
+# Credentials & Secrets
+.env
+skills/.env
+
+# Recorded Actions Log (Transient Session State)
+skills/actions.md
