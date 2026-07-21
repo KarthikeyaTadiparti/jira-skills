@@ -47,9 +47,6 @@ JIRA_DEVELOPER_ACCOUNT_ID="your_jira_account_id"
 
 # Allowed Jira Project Keys (comma-separated)
 JIRA_ALLOWED_PROJECTS="PROJ,APP"
-
-# Allowed Jira Workflow Statuses (comma-separated, optional)
-JIRA_ALLOWED_STATUSES="To Do,In Progress,In Review,Done"
 ```
 
 ---
@@ -82,7 +79,7 @@ Converts completed work into a concise, professional Jira **Task** ticket.
 
 ### 2. `/task-update` Command
 
-Updates the status of an existing Jira issue (Task or Bug) to a valid workflow status.
+Updates the status of an existing Jira issue (Task or Bug) to a valid workflow status defined directly in the skill (`todo`, `in-progress`, `in-review`, `done`).
 
 ```text
 /task-update PROJ-101 in-progress

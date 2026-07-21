@@ -7,7 +7,7 @@ argument-hint: "<ISSUE_KEY> <TARGET_STATUS> (e.g. PROJ-123 done)"
 
 # Goal
 
-Update/move the status of an existing Jira issue (Task or Bug) to a valid workflow status defined in environment variables.
+Update/move the status of an existing Jira issue (Task or Bug) to a valid workflow status defined in this skill.
 
 ---
 
@@ -34,15 +34,14 @@ If either argument is missing, prompt the user for the missing details before up
 
 ---
 
-# Configuration & Environment Variables
+# Configuration & Workflow Statuses
 
-Read environment variables from `.env` (looking in the current skill folder, `.agents/skills/`, `skills/`, or root workspace) or system environment variables.
+Read environment variables from `.env` (looking in current skill folder, `.agents/skills/`, `skills/`, or root workspace) or system environment variables.
 
 Environment Variables Used:
 - `JIRA_ALLOWED_PROJECTS` (Comma-separated allowed project keys, e.g. `PROJ,APP`)
-- `JIRA_ALLOWED_STATUSES` (Comma-separated allowed statuses, default: `To Do,In Progress,In Review,Done`)
 
-Default Allowed Statuses (if `JIRA_ALLOWED_STATUSES` is not set):
+Allowed Workflow Statuses:
 - `To Do`
 - `In Progress`
 - `In Review`
@@ -65,9 +64,9 @@ Status Alias Mappings:
    > Invalid project key '<PROJECT_KEY>'. Allowed project keys are: <JIRA_ALLOWED_PROJECTS>.
 
 ## 2. Validate Target Status
-1. Match `<TARGET_STATUS>` against `JIRA_ALLOWED_STATUSES` or the alias mappings (case-insensitive).
-2. If mapped to a valid status, use that exact standard status name.
-3. If invalid, stop immediately and respond:
+1. Match `<TARGET_STATUS>` against the Allowed Workflow Statuses or Status Alias Mappings above (case-insensitive).
+2. If mapped to a valid status, use that exact standard Jira status name (`To Do`, `In Progress`, `In Review`, `Done`).
+3. If invalid and cannot be mapped, stop immediately and respond:
    > Invalid status '<TARGET_STATUS>'. Allowed statuses are: To Do, In Progress, In Review, Done.
 
 ---
